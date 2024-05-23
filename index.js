@@ -52,6 +52,17 @@ function displayCalendar() {
         const eventDiv = document.createElement('div');
         eventDiv.classList.add('event');
         eventDiv.innerText = eventForDay.title;
+
+        let eventColor = ['green','yellow','orange','red','blue'];
+        function randomSelection(m,n){
+          return Math.random()*(n-m)+m;
+        }
+        function randomColor(){
+          if(eventDiv.backgroundColor != eventColor){
+          eventDiv.style.backgroundColor = eventColor[Math.floor(randomSelection(1,6))-1];
+        }}
+        randomColor();
+
         daySquare.appendChild(eventDiv);
       }
       daySquare.addEventListener('click', () => openModal(dayString));
@@ -81,5 +92,8 @@ function saveEvent() {
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
+  }
+  if (events.Date == eventForDay){
+   
   }
 }
